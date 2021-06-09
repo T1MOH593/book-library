@@ -10,10 +10,10 @@
     <name>my-own-web-app</name>
     <packaging>war</packaging>
 
-<!--    <scm>-->
-<!--        <connection>scm:git:git@github.com:T1MOH593/book-library.git</connection>-->
-<!--        <url>https://github.com/T1MOH593/book-library/tree/master</url>-->
-<!--    </scm>-->
+    <scm>
+        <connection>scm:git:git@github.com:T1MOH593/book-library.git</connection>
+        <url>https://github.com/T1MOH593/book-library</url>
+    </scm>
 
     <properties>
         <maven.compiler.target>16</maven.compiler.target>
