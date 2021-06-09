@@ -4,7 +4,7 @@
 
     <groupId>com.vlad</groupId>
     <artifactId>my-own-web-app</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>my-own-web-app</name>
     <packaging>war</packaging>
 
@@ -12,7 +12,7 @@
         <connection>scm:git:git@github.com:T1MOH593/book-library.git</connection>
         <developerConnection>scm:git:git@github.com:T1MOH593/book-library.git</developerConnection>
         <url>https://github.com/T1MOH593/book-library</url>
-      <tag>my-own-web-app-1.0.0</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <properties>
