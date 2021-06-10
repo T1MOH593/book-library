@@ -16,4 +16,4 @@ Web приложение для ведения учёта книг, которы
 
 
 
-![book-library](https://user-images.githubusercontent.com/79079180/121313239-dda16880-c90e-11eb-84ea-f97ed03ebf9c.gif)
+![проект](https://user-images.githubusercontent.com/79079180/121464346-662a1280-c9bc-11eb-81e8-2146302ffe50.gif)
