@@ -14,6 +14,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.TestInstance.Lifecycle.*;
 
 @Tag("mapper")
+@Tag("unit")
 @TestInstance(PER_CLASS)
 public class MapperFromBookEntityToAllBooksDtoTest {
 

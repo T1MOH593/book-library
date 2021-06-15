@@ -14,6 +14,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.TestInstance.Lifecycle.*;
 
 @Tag("validator")
+@Tag("unit")
 @TestInstance(PER_CLASS)
 public class BookDtoValidatorTest {
 

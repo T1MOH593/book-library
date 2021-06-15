@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.TestInstance.Lifecycle.*;
 
 @Tag("validator")
+@Tag("unit")
 @TestInstance(PER_CLASS)
 public class ValidationResultTest {
 

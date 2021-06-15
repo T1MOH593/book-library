@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle.*;
 import static org.mockito.Mockito.*;
 
 @Tag("validator")
+@Tag("unit")
 @TestInstance(PER_CLASS)
 @ExtendWith(MockitoExtension.class)
 public class UserDtoValidatorTest {
