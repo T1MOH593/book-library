@@ -23,7 +23,7 @@ public class MapperFromBookEntityToAllBooksDto implements Mapper<List<BookEntity
         return allBooksDto;
     }
 
-    private static Map<String, String> getMapFromBookEntity(BookEntity book) {
+    private Map<String, String> getMapFromBookEntity(BookEntity book) {
         Map<String, String> map = new HashMap<>();
         var declaredFields = book.getClass().getDeclaredFields();
         for (Field declaredField : declaredFields) {

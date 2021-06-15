@@ -4,6 +4,7 @@ import com.vlad.my_own_web_app.entity.BookEntity;
 import com.vlad.my_own_web_app.entity.Status;
 import com.vlad.my_own_web_app.util.ConnectionManager;
 import com.vlad.my_own_web_app.util.EmailChanger;
+import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 
@@ -13,7 +14,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor
+import static lombok.AccessLevel.PRIVATE;
+
+@NoArgsConstructor(access = PRIVATE)
 public class BookDao {
 
     private static final BookDao INSTANCE = new BookDao();
@@ -62,11 +65,11 @@ public class BookDao {
             """;
 
     @SneakyThrows
-    public List<BookEntity> findAllUsersBooks(String email) {
+    public List<BookEntity> findAllUsersBooks(String changedEmail) {
         try (var connection = ConnectionManager.get();
              var preparedStatement = connection.prepareStatement(FIND_ALL_USERS_BOOKS_SQL.formatted(
-                     EmailChanger.getChangedEmail(email),
-                     EmailChanger.getChangedEmail(email)))) {
+                     EmailChanger.getChangedEmail(changedEmail),
+                     EmailChanger.getChangedEmail(changedEmail)))) {
 
             var resultSet = preparedStatement.executeQuery();
 
@@ -83,7 +86,7 @@ public class BookDao {
     }
 
     @SneakyThrows
-    public boolean save(BookEntity bookEntity, String email) {
+    public boolean save(BookEntity bookEntity, String changedEmail) {
         try (var saveInBooksConnection = ConnectionManager.get();
              var saveInBooks = saveInBooksConnection.prepareStatement(SAVE_IN_BOOKS_SQL)) {
             saveInBooks.setString(1, bookEntity.getTitle());
@@ -106,7 +109,7 @@ public class BookDao {
                 }
             }
             try (var saveInUsersConnection = ConnectionManager.get();
-                 var saveInUsersStatement = saveInUsersConnection.prepareStatement(SAVE_IN_USERS_SQL.formatted(email))) {
+                 var saveInUsersStatement = saveInUsersConnection.prepareStatement(SAVE_IN_USERS_SQL.formatted(changedEmail))) {
                 saveInUsersStatement.setInt(1, id);
                 saveInUsersStatement.setString(2, bookEntity.getStatus().name());
 
@@ -118,7 +121,7 @@ public class BookDao {
     }
 
     @SneakyThrows
-    public void delete(BookEntity bookEntity, String email) {
+    public boolean delete(BookEntity bookEntity, String changedEmail) {
         try (Connection getIdConnection = ConnectionManager.get();
              var getIdStatement = getIdConnection.prepareStatement(FIND_BY_AUTHOR_AND_ID)) {
             getIdStatement.setString(1, bookEntity.getTitle());
@@ -129,16 +132,16 @@ public class BookDao {
             resultSet.next();
             var id = resultSet.getInt("id");
             try (var deleteBookConnection = ConnectionManager.get();
-                 var deleteBookStatement = deleteBookConnection.prepareStatement(DELETE_SQL.formatted(email))) {
+                 var deleteBookStatement = deleteBookConnection.prepareStatement(DELETE_SQL.formatted(changedEmail))) {
                 deleteBookStatement.setInt(1, id);
 
-                deleteBookStatement.executeUpdate();
+                return deleteBookStatement.executeUpdate() == 1;
             }
         }
     }
 
     @SneakyThrows
-    public void changeStatus(BookEntity bookEntity, String email) {
+    public void changeStatus(BookEntity bookEntity, String changedEmail) {
         try (Connection getIdConnection = ConnectionManager.get();
              var getIdStatement = getIdConnection.prepareStatement(FIND_BY_AUTHOR_AND_ID)) {
             getIdStatement.setString(1, bookEntity.getTitle());
@@ -149,7 +152,7 @@ public class BookDao {
             resultSet.next();
             var id = resultSet.getInt("id");
             try (var changeStatusConnection = ConnectionManager.get();
-                 var changeStatusStatement = changeStatusConnection.prepareStatement(CHANGE_STATUS_SQL.formatted(email))) {
+                 var changeStatusStatement = changeStatusConnection.prepareStatement(CHANGE_STATUS_SQL.formatted(changedEmail))) {
                 changeStatusStatement.setString(1, bookEntity.getStatus().name());
                 changeStatusStatement.setInt(2, id);
 
