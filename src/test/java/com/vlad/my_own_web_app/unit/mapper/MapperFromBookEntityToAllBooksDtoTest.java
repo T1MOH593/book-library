@@ -21,7 +21,7 @@ public class MapperFromBookEntityToAllBooksDtoTest {
 
     @ParameterizedTest
     @MethodSource("com.vlad.my_own_web_app.unit.mapper.ArgumentsForMapperTests#getArgumentsForShouldCorrectlyMapToAllBooksDto")
-    void shouldCorrectlyMapToAllBooksDto(List<BookEntity> bookEntities, BooksDto booksDto) {
+    void shouldMapToAllBooksDto(List<BookEntity> bookEntities, BooksDto booksDto) {
 
         var result = mapper.map(bookEntities);
 

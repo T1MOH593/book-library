@@ -21,7 +21,7 @@ public class MapperFromBookDtoToBookEntityTest {
 
     @ParameterizedTest
     @MethodSource("com.vlad.my_own_web_app.unit.mapper.ArgumentsForMapperTests#getArgumentsForShouldCorrectlyMapToBookEntity")
-    void shouldCorrectlyMapToBookEntity(BookDto bookDto, BookEntity bookEntity) {
+    void shouldMapToBookEntity(BookDto bookDto, BookEntity bookEntity) {
         var result = mapper.map(bookDto);
 
         assertThat(result).isEqualTo(bookEntity);

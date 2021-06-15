@@ -21,7 +21,7 @@ public class BookDtoValidatorTest {
 
     @ParameterizedTest
     @MethodSource("com.vlad.my_own_web_app.unit.validator.ArgumentsForValidatorTests#argumentsForShouldCorrectlyValidateBookDto")
-    void shouldCorrectlyValidateBookDto(BookDto bookDto, Boolean expectedResult) {
+    void shouldValidateBookDto(BookDto bookDto, Boolean expectedResult) {
         var validationResult = bookDtoValidator.isValid(bookDto);
 
         assertThat(validationResult.isValid()).isEqualTo(expectedResult);

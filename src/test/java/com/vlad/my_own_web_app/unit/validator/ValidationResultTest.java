@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle.*;
 public class ValidationResultTest {
 
     @Test
-    void shouldCorrectlyAddAndValidate() {
+    void shouldAddAndValidate() {
         var validationResult = new ValidationResult();
         validationResult.add(Error.of("dummy"));
 

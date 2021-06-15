@@ -37,7 +37,7 @@ public class UserDtoValidatorTest {
 
     @ParameterizedTest
     @MethodSource("com.vlad.my_own_web_app.unit.validator.ArgumentsForValidatorTests#argumentsForShouldCorrectlyValidateUserDto")
-    void shouldCorrectlyValidateUserDto(UserDto userDto, Boolean expectedResult) {
+    void shouldValidateUserDto(UserDto userDto, Boolean expectedResult) {
 
         var validationResult = userDtoValidator.isValid(userDto);
 

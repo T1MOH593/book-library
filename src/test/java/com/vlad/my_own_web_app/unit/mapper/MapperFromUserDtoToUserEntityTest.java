@@ -19,7 +19,7 @@ public class MapperFromUserDtoToUserEntityTest {
 
     @ParameterizedTest
     @MethodSource("com.vlad.my_own_web_app.unit.mapper.ArgumentsForMapperTests#getArgumentsForShouldCorrectlyMapToUserEntity")
-    void shouldCorrectlyMapToUserEntity(UserDto userDto, UserEntity userEntity) {
+    void shouldMapToUserEntity(UserDto userDto, UserEntity userEntity) {
         var result = mapper.map(userDto);
 
         assertThat(result).isEqualTo(userEntity);
