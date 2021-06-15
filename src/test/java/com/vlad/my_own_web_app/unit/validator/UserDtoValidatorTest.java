@@ -35,7 +35,6 @@ public class UserDtoValidatorTest {
         lenient().doReturn(Optional.of(UserEntity.builder().build())).when(userDao).findByEmail(TEST_EMAIL);
     }
 
-    @Disabled
     @ParameterizedTest
     @MethodSource("com.vlad.my_own_web_app.unit.validator.ArgumentsForValidatorTests#argumentsForShouldCorrectlyValidateUserDto")
     void shouldCorrectlyValidateUserDto(UserDto userDto, Boolean expectedResult) {

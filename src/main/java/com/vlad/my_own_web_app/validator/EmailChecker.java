@@ -6,6 +6,6 @@ import lombok.experimental.UtilityClass;
 public class EmailChecker {
 
     public static boolean isEmailValid(String email) {
-        return email.matches("[a-z_]{1,15}@[a-z]{2,8}.[a-z]{1,5}");
+        return email.matches("^[a-z_]{1,15}@[a-z]{2,8}\\.[a-z]{1,5}$");
     }
 }
