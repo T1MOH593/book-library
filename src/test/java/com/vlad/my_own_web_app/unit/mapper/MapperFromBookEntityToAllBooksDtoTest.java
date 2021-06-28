@@ -5,8 +5,10 @@ import com.vlad.my_own_web_app.entity.BookEntity;
 import com.vlad.my_own_web_app.mapper.MapperFromBookEntityToAllBooksDto;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 

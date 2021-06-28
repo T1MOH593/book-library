@@ -18,10 +18,10 @@ public class BookService {
 
     private static final BookService INSTANCE = new BookService();
 
-    private final BookDao bookDao = BookDao.getInstance();
-    private final BookDtoValidator bookDtoValidator = BookDtoValidator.getInstance();
-    private final MapperFromBookDtoToBookEntity mapperFromBookDtoToBookEntity = MapperFromBookDtoToBookEntity.getInstance();
-    private final MapperFromBookEntityToAllBooksDto mapperFromBookEntityToBooksDto = MapperFromBookEntityToAllBooksDto.getInstance();
+    private BookDao bookDao = BookDao.getInstance();
+    private BookDtoValidator bookDtoValidator = BookDtoValidator.getInstance();
+    private MapperFromBookDtoToBookEntity mapperFromBookDtoToBookEntity = MapperFromBookDtoToBookEntity.getInstance();
+    private MapperFromBookEntityToAllBooksDto mapperFromBookEntityToBooksDto = MapperFromBookEntityToAllBooksDto.getInstance();
 
     public void addBook(BookDto bookDto, String email) {
         var validationResult = bookDtoValidator.isValid(bookDto);

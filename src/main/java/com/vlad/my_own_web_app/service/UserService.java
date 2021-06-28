@@ -16,9 +16,9 @@ public class UserService {
 
     private static final UserService INSTANCE = new UserService();
 
-    private final UserDao userDao = UserDao.getInstance();
-    private final UserDtoValidator userDtoValidator = UserDtoValidator.getInstance();
-    private final MapperFromUserDtoToUserEntity mapperFromUserDtoToUserEntity = MapperFromUserDtoToUserEntity.getInstance();
+    private UserDao userDao = UserDao.getInstance();
+    private UserDtoValidator userDtoValidator = UserDtoValidator.getInstance();
+    private MapperFromUserDtoToUserEntity mapperFromUserDtoToUserEntity = MapperFromUserDtoToUserEntity.getInstance();
 
     public void create(UserDto userDto) {
         var validationResult = userDtoValidator.isValid(userDto);
@@ -28,7 +28,6 @@ public class UserService {
         var userEntity = mapperFromUserDtoToUserEntity.map(userDto);
         userDao.save(userEntity);
         userDao.createUserTable(userEntity);
-
     }
 
     public void isLogged(UserDto userDto) {
